@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The story · Space Museum</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&family=Unbounded:wght@500;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<!-- story --></head><body data-page="story">
+<canvas class="sky" id="sky" aria-hidden="true"></canvas>
+<div class="wrap">
+
+<div id="scrolly" class="scrolly">
+<canvas id="sxCv" class="sx-cv" aria-hidden="true"></canvas><div class="sx-fade" id="sxFade"></div>
+<div class="sx-rail" id="sxRail" aria-hidden="true"><i data-c="earth">Earth</i><i data-c="space">Space</i><i data-c="mars">Mars</i><i data-c="moon">Moon</i><i data-c="play">Play</i></div>
+<template id="sxIntro"><section class="sx-seg sx-hero" data-seg="earth" style="height:280vh"><div class="sx-st">
+  <div class="sx-htxt"><p class="sx-kick">Space Museum · Beyond their mission</p><h1>Are you ready to see<br>the tech of the galaxy?</h1>
+  <p class="sx-sub">Scroll down to launch your spaceship. We will visit every machine NASA sent out there, one by one.</p>
+  </div>
+  <div class="sx-lines"><p data-in=".28" data-out=".62">3… 2… 1… <b>Lift-off!</b></p><p data-in=".62">Goodbye, Earth! Into deep space we go…</p></div>
+  <p class="sx-hint">Press <kbd>Space</kbd> or scroll to launch <span>▼</span></p></div></section></template>
+<template id="sxEnd"><section class="sx-seg sx-endsec" data-seg="end" style="height:170vh"><div class="sx-st"><div class="sx-endc">
+  <p class="sx-kick">You met all 11 machines!</p><h2>Welcome to the museum</h2>
+  <p class="sx-sub">In the museum you can <b>play the game</b> to drive a machine yourself, and open <b>Device journey</b> to understand what every device does. We hope you enjoy it!</p>
+  <a class="sx-play big" id="storyEnter" href="index.html"><span class="bp-ring" aria-hidden="true"></span>Enter the museum →</a>
+  <p class="sx-soft">Want to see it again? Use “Replay the story” on the home page any time.</p></div></div></section></template>
+<div id="sxFlow"></div>
+</div>
+<footer class="foot2"><nav aria-label="Footer"><a href="index.html">Home</a><a href="device-journey.html">Equipment</a><a href="engineering.html">Engineering lab</a><a href="learning.html">Learning zone</a><a href="maps-timeline.html">Maps & timeline</a><a href="data-lab.html">Data lab</a><a href="astronaut-journey.html">Astronauts</a><a href="about.html">About</a></nav><p>Beyond Their Mission is an independent educational project, not an official NASA website.</p></footer>
+</div>
+<div id="layer" hidden>
+  <div class="scrim" id="scrim"></div>
+  <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+    <div class="d-top"><span id="dBadge"></span><button class="d-close" id="dClose">Close</button></div>
+    <div id="dBody"></div>
+  </aside>
+</div>
+
+<div id="pd" class="pd" hidden role="dialog" aria-modal="true" aria-labelledby="pdTitle">
+  <div class="pd-stage"><button class="d-close pd-back" id="pdClose">← Back</button><div id="pdGlobe"></div></div>
+  <aside class="pd-panel" id="pdPanel"></aside>
+</div>
+
+<div id="mv" class="mv" hidden role="dialog" aria-modal="true" aria-labelledby="mvTitle">
+  <div class="mv-stage"><canvas id="mvCv"></canvas><div class="mv-where" id="mvWhere"></div><div class="mv-hots" id="mvHots"></div><div class="mv-hud" id="mvHud" aria-live="polite"></div><p class="mv-hint">Drag to rotate · Scroll or pinch to zoom · Tap a numbered dot</p></div>
+  <aside class="mv-side">
+    <div class="d-top"><p class="eyebrow">How it works</p><button class="d-close" id="mvClose">Close</button></div>
+    <h2 id="mvTitle"></h2>
+    <p class="lede" id="mvLede" style="margin-top:8px"></p>
+    <ol class="steps" id="mvSteps"></ol>
+    <div class="mv-pn" id="mvPn" hidden role="region" aria-live="polite"></div>
+    <div class="mv-ctrl"><button class="btn" id="mvPlay">Pause</button><button class="btn ghost" id="mvReset">Reset view</button></div>
+    <p class="mv-note">Simplified model, not to scale. Tap a numbered dot and the part appears right here in this panel. Take as long as you like. Press Listen if you want to hear it.</p>
+  </aside>
+</div>
+
+
+
+
+
+<button class="sfx-fab" data-sfx id="sfxFab" type="button">Sound</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="assets/site.js"></script>
+<script>boot()</script>
+<script>document.addEventListener("click",function(e){var m=e.target.closest(".more");document.querySelectorAll(".more.open").forEach(function(x){if(x!==m)x.classList.remove("open")});if(m&&e.target.closest(".more-b"))m.classList.toggle("open")})</script>
+</body></html>

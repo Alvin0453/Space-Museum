@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Data lab · Space Museum</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&family=Unbounded:wght@500;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<script>(function(){function sd(){try{if(sessionStorage.getItem("sm_in")==="1")return 1}catch(e){}return /sm_in/.test(window.name)}try{sessionStorage.setItem("sm_in","1")}catch(e){}try{if(!/sm_in/.test(window.name))window.name+=" sm_in"}catch(e){}})()</script>
+</head><body data-page="data-lab">
+<canvas class="sky" id="sky" aria-hidden="true"></canvas>
+<div class="wrap">
+<header class="topbar">
+  <a class="logo2" href="index.html" aria-label="Space Museum, home"><svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><ellipse cx="32" cy="20" rx="28" ry="11" transform="rotate(-20 32 20)"/><ellipse cx="32" cy="20" rx="21" ry="7.6" transform="rotate(-20 32 20)"/><ellipse cx="32" cy="20" rx="14" ry="4.6" transform="rotate(-20 32 20)"/><circle cx="32" cy="20" r="3.4" fill="currentColor" stroke="none"/></svg></a>
+  <nav class="navx" aria-label="Main"><a href="index.html">Home</a><a href="device-journey.html">Equipment</a><a href="engineering.html">Engineering lab</a><a href="learning.html">Learning zone</a><div class="more"><button class="more-b" type="button" aria-haspopup="true" aria-current="page">More <i aria-hidden="true">▾</i></button><div class="more-menu"><a href="maps-timeline.html">Maps & timeline</a><a href="data-lab.html" aria-current="page">Data lab</a><a href="astronaut-journey.html">Astronauts</a><a href="about.html">About</a></div></div></nav>
+</header>
+<div class="pagehead"><p class="crumb"><a href="index.html">Home</a> / Data lab</p><h1 class="ph-title">NASA data lab</h1><p class="lede">Real NASA measurements, turned into something you can see.</p></div>
+<main><section class="sec"><p class="eyebrow">NASA Data Laboratory</p><h2>The Moon is moving away</h2><p class="lede">Lunar laser ranging uses the reflectors Apollo astronauts left on the Moon. Scientists fire a laser, time how long the light takes to return, and calculate the distance.</p><div id="dlab"></div></section><section class="sec"><p class="eyebrow">Data transparency</p><h2>How this feature uses NASA data</h2><p class="lede"></p><div class="tw"><table class="dt"><tbody>
+<tr><td data-k>Dataset</td><td><span id="dlSrc">Lunar laser-ranging normal points (round-trip light times to the Apollo reflectors). The NASA CDDIS archive needs a login, so a public alternative source is used and named here once the file is added.</span></td></tr>
+<tr><td data-k>Data provider</td><td>NASA Crustal Dynamics Data Information System (CDDIS) · <a href="https://cddis.nasa.gov/" target="_blank" rel="noopener">cddis.nasa.gov</a></td></tr>
+<tr><td data-k>Variables used</td><td>Station, laser-shot time, round-trip travel time and reflector identification</td></tr>
+<tr><td data-k>Processing</td><td>Convert each round-trip time into distance with d = (c × t) ÷ 2; record units and dates; document any filtering or exclusions.</td></tr>
+<tr><td data-k>Visualisation</td><td>Calculated Earth–Moon distance plotted against date, with a straight-line trend.</td></tr>
+<tr><td data-k>Interpretation</td><td>The Moon moves away from Earth by about 3.8 centimetres per year. A selected subset of data has limits and may not show that exactly.</td></tr>
+<tr><td data-k>Status</td><td><mark class="vf">PENDING</mark> The data file (assets/data/llr.csv) has not been added yet. Until it is, this page only shows the calculator.</td></tr></tbody></table></div></section></main>
+<footer class="foot2"><nav aria-label="Footer"><a href="index.html">Home</a><a href="device-journey.html">Equipment</a><a href="engineering.html">Engineering lab</a><a href="learning.html">Learning zone</a><a href="maps-timeline.html">Maps & timeline</a><a href="data-lab.html">Data lab</a><a href="astronaut-journey.html">Astronauts</a><a href="about.html">About</a></nav><p>Beyond Their Mission is an independent educational project, not an official NASA website.</p></footer>
+</div>
+<div id="layer" hidden>
+  <div class="scrim" id="scrim"></div>
+  <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+    <div class="d-top"><span id="dBadge"></span><button class="d-close" id="dClose">Close</button></div>
+    <div id="dBody"></div>
+  </aside>
+</div>
+
+<div id="pd" class="pd" hidden role="dialog" aria-modal="true" aria-labelledby="pdTitle">
+  <div class="pd-stage"><button class="d-close pd-back" id="pdClose">← Back</button><div id="pdGlobe"></div></div>
+  <aside class="pd-panel" id="pdPanel"></aside>
+</div>
+
+<div id="mv" class="mv" hidden role="dialog" aria-modal="true" aria-labelledby="mvTitle">
+  <div class="mv-stage"><canvas id="mvCv"></canvas><div class="mv-where" id="mvWhere"></div><div class="mv-hots" id="mvHots"></div><div class="mv-hud" id="mvHud" aria-live="polite"></div><p class="mv-hint">Drag to rotate · Scroll or pinch to zoom · Tap a numbered dot</p></div>
+  <aside class="mv-side">
+    <div class="d-top"><p class="eyebrow">How it works</p><button class="d-close" id="mvClose">Close</button></div>
+    <h2 id="mvTitle"></h2>
+    <p class="lede" id="mvLede" style="margin-top:8px"></p>
+    <ol class="steps" id="mvSteps"></ol>
+    <div class="mv-pn" id="mvPn" hidden role="region" aria-live="polite"></div>
+    <div class="mv-ctrl"><button class="btn" id="mvPlay">Pause</button><button class="btn ghost" id="mvReset">Reset view</button></div>
+    <p class="mv-note">Simplified model, not to scale. Tap a numbered dot and the part appears right here in this panel. Take as long as you like. Press Listen if you want to hear it.</p>
+  </aside>
+</div>
+
+
+
+
+
+<button class="sfx-fab" data-sfx id="sfxFab" type="button">Sound</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="assets/site.js"></script>
+<script>boot()</script>
+<script>document.addEventListener("click",function(e){var m=e.target.closest(".more");document.querySelectorAll(".more.open").forEach(function(x){if(x!==m)x.classList.remove("open")});if(m&&e.target.closest(".more-b"))m.classList.toggle("open")})</script>
+</body></html>
