@@ -1,1 +1,1 @@
-After download the file, click into the file, and click the index.html.
+Hello, you click our github. Then, you see the code, it is green colour, click the code button. Then, click the "Download ZIP", After download the ZIP file, UnZIP the file, and click into the file, and click the index.html. Now You can enjoy!
